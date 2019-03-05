@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <style>
- div#test{ border:#000 1px solid; padding: 10px 40px 40px 40px;}
-    </style>
     <script>
         var pos = 0, test, test_status, question, choice, chA, chB, chC, chD, correct= 0;
-        var questions=[
+        var questions= [
              ["Which country first produced bananas?","Jamaica","India","South Africa","Mexico","None of the above","B"],
              ["Which country was previously known as Rhodesia?", "Namibia","Malawi","Zimbabwe","Lesotho","C"],
              ["Which country prduces the maximum sugar in the world?","USA","India","Cuba","Brazil","B"],
@@ -28,22 +25,24 @@
              ["What is the shape of the earth's orbit around the sun?","Circular","Hyperbolic","Elliptical","Parabolic","C"],
              ["Which of the following countries has the largest area in the world?","Canada","China","USA","Russia","D"]
             
-        ];
-        function _(x){
-            return document.getElementById(x);
-        }
+           ];
+        // function _(x){
+        //     return document.getElementById(x);
+       // }
         function renderQuestion(){
-            test=_("test");
+            test= document.getElementById("test");
+            status = document.getElementById("test_status");
+
             if(pos>= questions.length){
                 
                 test.innerHTML = "<h2>You got "+correct+" of "+questions.length+ " questions correct!</h2>";
-                _("test_status").innerHTML = "Test Completed";
+               status.innerHTML = "Test Completed";
                 pos = 0;
                 correct = 0;
                 return false;
             }
-            _("test_status").innerHTML = "Question " + (pos+1)+ " of " +questions.length;
-            question = questions[pos][20];
+            status.innerHTML = "Question " + (pos+1) + " of " + questions.length;
+            question = questions[pos][0];
             chA = questions[pos][1];
             chB = questions[pos][2];
             chC = questions[pos][3];
@@ -62,7 +61,7 @@
                 choice = choices[i].value;
             }
         }
-        if(choice == questions[pos][]){
+        if(choice == questions[pos][5]){
             correct++
         }
         pos++;
@@ -71,13 +70,10 @@
         window.addEventListener("load",renderQuestion, false);
     </script>
     </head>
-</html>
+
 <body>
 <h2 id="test_status"></h2>
 <div id="test"></div>
 
-
-
-
-
 </body>
+</html>
